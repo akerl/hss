@@ -16,7 +16,18 @@ def command(input)
     return IO.popen(input) { |cmd| cmd.read }
 end
 
-Config = open(Pathname.new(__FILE__).realpath.split()[0].to_s + '/config.yml') { |file| YAML.load(file.read) }
+possible_paths = [
+    File.expand_path(ENV['HSS_CONFIG'].to_s),
+    File.expand_path('~/.hss.yml'),
+    Pathname.new(__FILE__).realpath.split()[0].to_s + '/config.yml',
+]
+possible_paths.keep_if { |path| not File.directory? path and File.exists? path }
+if possible_paths.empty?
+    puts 'No config file found'
+    exit 1
+end
+
+Config = open(possible_paths[0]) { |file| YAML.load(file.read) }
 Input = ARGV.pop
 Args = ARGV.join(' ')
 
@@ -31,4 +42,7 @@ else
         exec "ssh #{Args} #{long_form}"
     end
 end
+
+puts "Couldn't find a matching host for: #{Input}"
+exit 1
 
