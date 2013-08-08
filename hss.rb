@@ -2,6 +2,7 @@
 
 require 'yaml'
 require 'pathname'
+require 'erb'
 
 def expand(input)
     Config['expansions'].each { |long, shorts| return long if shorts.include? input }
@@ -38,7 +39,7 @@ if Input.nil? or Input == 'help'
 else
     Config['patterns'].each do |pattern|
         next unless Input.match(pattern['short'])
-        long_form = eval '"' + pattern['long'] + '"'
+        long_form = ERB.new('<%= "' + pattern['long'] + '" %>').result
         exec "ssh #{Args} #{long_form}"
     end
 end
