@@ -1,12 +1,13 @@
 Gem::Specification.new do |s|
   s.name        = 'hss'
-  s.version     = '0.1.0'
+  s.version     = '0.1.4'
   s.date        = '2013-08-09'
   s.summary     = 'SSH helper'
   s.description = 'Regex-based SSH shortcut tool'
   s.authors     = ['Les Aker']
   s.email       = 'me@lesaker.org'
-  s.bindir      = '.'
+  s.bindir      = 'lib'
+  s.files       = ['lib/hss']
   s.executables = ['hss']
   s.homepage    = 'https://github.com/akerl/hss'
   s.license     = 'MIT'

@@ -5,12 +5,12 @@ require 'pathname'
 require 'erb'
 
 def expand(input)
-    Config['expansions'].each { |long, shorts| return long if shorts.include? input }
+    Conf['expansions'].each { |long, shorts| return long if shorts.include? input }
     raise NameError, "No expansion found for: #{input}"
 end
 
 def shortcut(input)
-    return Config['shortcuts'][input]
+    return Conf['shortcuts'][input]
 end
 
 def command(input)
@@ -28,16 +28,16 @@ if possible_paths.empty?
     exit 1
 end
 
-Config = open(possible_paths[0]) { |file| YAML.load(file.read) }
+Conf = open(possible_paths[0]) { |file| YAML.load(file.read) }
 Input = ARGV.pop
 Args = ARGV.join(' ')
 
 if Input.nil? or Input == 'help'
     puts 'How to use:'
     puts '(what you type) -> (where it takes you)'
-    Config['patterns'].each { |pattern| puts pattern['example'] }
+    Conf['patterns'].each { |pattern| puts pattern['example'] }
 else
-    Config['patterns'].each do |pattern|
+    Conf['patterns'].each do |pattern|
         next unless Input.match(pattern['short'])
         long_form = eval '"' + pattern['long'] + '"'
         #long_form = ERB.new('<%= "' + pattern['long'] + '" %>').result
