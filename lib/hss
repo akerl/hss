@@ -29,7 +29,7 @@ if possible_paths.empty?
 end
 
 Conf = open(possible_paths[0]) { |file| YAML.load(file.read) }
-Input = ARGV.pop
+Input = ARGV.shift
 Args = ARGV.join(' ')
 
 if Input.nil? or Input == 'help'
@@ -41,7 +41,7 @@ else
         next unless Input.match(pattern['short'])
         long_form = eval '"' + pattern['long'] + '"'
         #long_form = ERB.new('<%= "' + pattern['long'] + '" %>').result
-        exec "ssh #{Args} #{long_form}"
+        exec "ssh #{long_form} #{Args}"
     end
 end
 
