@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'hss'
-  s.version     = '0.1.4'
+  s.version     = '0.1.5'
   s.date        = '2013-08-09'
   s.summary     = 'SSH helper'
   s.description = 'Regex-based SSH shortcut tool'
