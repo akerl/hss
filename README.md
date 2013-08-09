@@ -1,18 +1,20 @@
 hss
 =========
 
+[![Gem Version](https://badge.fury.io/rb/hss.png)](http://badge.fury.io/rb/hss)
+
 SSH helper that uses regex and fancy expansion to dynamically manage SSH shortcuts
 
 ## Usage
 
 1. Install as per the Installation section below
-2. Set your configuration yaml up as desired
-3. Run `./hss.rb help` for a list of available commands
-4. Run `./hss.rb $command` to do that thing
+2. Set your configuration yaml up as desired (See Configuration below)
+3. Run `hss help` for a list of available commands
+4. Run `hss $command` to do that thing
 
 ## Configuration
 
-1. You can put your configuration in ~/.hss.yml, ./config.yml (same directory as hss.rb), or another file specified by the "HSS\_CONFIG" environment variable.
+1. You can put your configuration in ~/.hss.yml or another file specified by the "HSS\_CONFIG" environment variable.
 2. The only required configuration section is "patterns", which contains an array of hashes with the following attributes:
   * note: Name of this pattern ("my servers")
   * example: Shows how this is used ("jimbo -> root@jimbo.example.org")
@@ -35,9 +37,8 @@ SSH helper that uses regex and fancy expansion to dynamically manage SSH shortcu
 
 ## Installation
 
-    git clone git://github.com/akerl/hss
-    Drop your desired configuration yaml into ./config.yml or ~/.hss.yml, or set HSS_CONFIG to the desired path in your ENV
-    For convenience, you can symlink hss.rb into /usr/local/bin or somewhere else in your $PATH
+    gem install hss
+    ln -s /path/to/your/config.yml ~/.hss.yml
 
 ## License
 

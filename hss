@@ -39,7 +39,8 @@ if Input.nil? or Input == 'help'
 else
     Config['patterns'].each do |pattern|
         next unless Input.match(pattern['short'])
-        long_form = ERB.new('<%= "' + pattern['long'] + '" %>').result
+        long_form = eval '"' + pattern['long'] + '"'
+        #long_form = ERB.new('<%= "' + pattern['long'] + '" %>').result
         exec "ssh #{Args} #{long_form}"
     end
 end
