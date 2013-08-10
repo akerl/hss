@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/akerl/hss.png)](https://waffle.io/akerl/hss)  
 hss
 =========
 
