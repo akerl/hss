@@ -43,8 +43,7 @@ else
         #long_form = ERB.new('<%= "' + pattern['long'] + '" %>').result
         exec "ssh #{long_form} #{Args}"
     end
+    puts "Couldn't find a matching host for: #{Input}"
+    exit 1
 end
-
-puts "Couldn't find a matching host for: #{Input}"
-exit 1
 
