@@ -30,7 +30,7 @@ end
 
 Conf = open(possible_paths[0]) { |file| YAML.load(file.read) }
 Input = ARGV.shift
-Args = ARGV.join(' ')
+Args = ARGV.inject('') { |memo, obj| memo += " '" + obj.gsub(/([$"])/, '\1') + "'" }
 
 if Input.nil? or Input == 'help'
     puts 'How to use:'
