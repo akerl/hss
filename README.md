@@ -24,17 +24,18 @@ SSH helper that uses regex and fancy expansion to dynamically manage SSH shortcu
   * long: Expanded form of this shortcut ("root@#$1.example.org")
     * This will be evaluated using Ruby's string interpolation, so you can use "#{var}", "#$1", "#{function()}", etc.
 3. Other helpers are available for use in long forms
-  * expand(): Uses the "expansions" section of the config. Format for this section is a hash of lists, as such
+  * expand(x): Uses the "expansions" section of the config. Format for this section is a hash of lists, as such
     expansions:
         expanded_form:
             - short_form1
             - short_form2
             - shrtfrm3
-  * shortcut(): Uses the "shortcuts" section of the config. Format for this section is a hash of strings, as such
+  * shortcut(x): Uses the "shortcuts" section of the config. Format for this section is a hash of strings, as such
     shortcuts:
         short1: expand to this
         other_short: 'expand to something else!'
-  * command(): Runs the given string as a command and uses the output for the expanded form
+  * command(x): Runs the given string as a command and uses the output for the expanded form
+  * default(x, y): If x is not nil, uses x. If it's nil, use y
 
 ## Installation
 
