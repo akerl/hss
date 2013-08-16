@@ -33,7 +33,7 @@ if possible_paths.empty?
 end
 
 Conf = open(possible_paths[0]) { |file| YAML.load(file.read) }
-Input = ARGV.shift
+Input = ARGV.delete_at ARGV.find_index { |x| x[0] != '-' }
 Args = ARGV.inject('') { |memo, obj| memo += " '" + obj.gsub(/([$"])/, '\1') + "'" }
 
 if Input.nil? or Input == 'help'
