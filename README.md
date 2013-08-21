@@ -42,6 +42,13 @@ SSH helper that uses regex and fancy expansion to dynamically manage SSH shortcu
   * command(x): Runs the given string as a command and uses the output for the expanded form
   * default(x, y): If x is not nil, uses x. If it's nil, use y
 
+## Debugging
+
+If you want hss to print the command it would have run rather than executing it, you just need to set the HSS\_DEBUG environment variable to something:
+
+    export HSS_DEBUG=foo
+    hss bar # will print rather than exec
+
 ## License
 
 hss is released under the MIT License. See the bundled LICENSE file for details.

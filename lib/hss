@@ -21,6 +21,8 @@ def default(a, b)
     a.nil? ? a : b
 end
 
+Debug = (ENV.include? 'HSS_DEBUG') ? true : false
+
 possible_paths = [
     File.expand_path(ENV['HSS_CONFIG'].to_s),
     File.expand_path('~/.hss.yml'),
@@ -45,7 +47,12 @@ else
         next unless Input.match(pattern['short'])
         long_form = eval '"' + pattern['long'] + '"'
         #long_form = ERB.new('<%= "' + pattern['long'] + '" %>').result
-        exec "ssh #{long_form} #{Args}"
+        if Debug
+            puts "ssh #{long_form} #{Args}"
+            exit
+        else
+            exec "ssh #{long_form} #{Args}"
+        end
     end
     puts "Couldn't find a matching host for: #{Input}"
     exit 1
