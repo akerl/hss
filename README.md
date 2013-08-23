@@ -13,6 +13,11 @@ SSH helper that uses regex and fancy expansion to dynamically manage SSH shortcu
 3. Run `hss help` for a list of available commands
 4. Run `hss $command` to do that thing
 
+## Installation
+
+    gem install hss
+    ln -s /path/to/your/config.yml ~/.hss.yml
+
 ## Configuration
 
 1. You can put your configuration in ~/.hss.yml or another file specified by the "HSS\_CONFIG" environment variable.
@@ -37,10 +42,12 @@ SSH helper that uses regex and fancy expansion to dynamically manage SSH shortcu
   * command(x): Runs the given string as a command and uses the output for the expanded form
   * default(x, y): If x is not nil, uses x. If it's nil, use y
 
-## Installation
+## Debugging
 
-    gem install hss
-    ln -s /path/to/your/config.yml ~/.hss.yml
+If you want hss to print the command it would have run rather than executing it, you just need to set the HSS\_DEBUG environment variable to something:
+
+    export HSS_DEBUG=foo
+    hss bar # will print rather than exec
 
 ## License
 
