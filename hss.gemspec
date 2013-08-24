@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'hss'
-  s.version     = '0.1.10'
-  s.date        = '2013-08-09'
+  s.version     = IO.popen('./lib/hss version') { |cmd| cmd.read }
+  s.date        = Time.now.strftime("%Y-%m-%d") 
   s.summary     = 'SSH helper'
   s.description = 'Regex-based SSH shortcut tool'
   s.authors     = ['Les Aker']

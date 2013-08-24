@@ -2,7 +2,13 @@
 
 require 'yaml'
 require 'pathname'
-require 'erb'
+
+Version = '0.1.11'
+
+if ARGV.length == 1 and ARGV[0] == 'version'
+    puts Version
+    exit
+end
 
 def expand(input)
     Conf['expansions'].each { |long, shorts| return long if shorts.include? input }
@@ -21,8 +27,6 @@ def default(a, b)
     a.nil? ? a : b
 end
 
-Debug = (ENV.include? 'HSS_DEBUG') ? true : false
-
 possible_paths = [
     File.expand_path(ENV['HSS_CONFIG'].to_s),
     File.expand_path('~/.hss.yml'),
@@ -35,8 +39,9 @@ if possible_paths.empty?
 end
 
 Conf = open(possible_paths[0]) { |file| YAML.load(file.read) }
-Input = ARGV.delete_at ARGV.find_index { |x| x[0] != '-' }
+Input = ARGV.delete_at ( ARGV.find_index { |x| x[0] != '-' } || 0 )
 Args = ARGV.inject('') { |memo, obj| memo += " '" + obj.gsub(/([$"])/, '\1') + "'" }
+Cmd = (ENV.include? 'HSS_DEBUG') ? 'echo ssh' : 'ssh'
 
 if Input.nil? or Input == 'help'
     puts 'How to use:'
@@ -46,13 +51,7 @@ else
     Conf['patterns'].each do |pattern|
         next unless Input.match(pattern['short'])
         long_form = eval '"' + pattern['long'] + '"'
-        #long_form = ERB.new('<%= "' + pattern['long'] + '" %>').result
-        if Debug
-            puts "ssh #{long_form} #{Args}"
-            exit
-        else
-            exec "ssh #{long_form} #{Args}"
-        end
+        exec "#{Cmd} #{long_form} #{Args}"
     end
     puts "Couldn't find a matching host for: #{Input}"
     exit 1
