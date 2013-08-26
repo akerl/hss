@@ -3,7 +3,7 @@
 require 'yaml'
 require 'pathname'
 
-Version = '0.1.11'
+Version = '0.1.12'
 
 if ARGV.length == 1 and ARGV[0] == 'version'
     puts Version
