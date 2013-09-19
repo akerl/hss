@@ -3,7 +3,7 @@
 require 'yaml'
 require 'pathname'
 
-Version = '0.1.12'
+Version = '0.1.13'
 
 if ARGV.length == 1 and ARGV[0] == 'version'
     puts Version
@@ -39,7 +39,7 @@ if possible_paths.empty?
 end
 
 Conf = open(possible_paths[0]) { |file| YAML.load(file.read) }
-Input = ARGV.delete_at( ARGV.find_index { |x| x[0] != '-' } || 0 )
+Input = ARGV.delete_at( ARGV.find_index { |x| x[0, 1] != '-' } || 0 )
 Args = ARGV.inject('') { |memo, obj| memo += " '" + obj.gsub(/([$"])/, '\1') + "'" }
 Cmd = (ENV.include? 'HSS_DEBUG') ? 'echo ssh' : 'ssh'
 
