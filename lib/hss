@@ -51,6 +51,8 @@ else
     Conf['patterns'].each do |pattern|
         next unless Input.match(pattern['short'])
         long_form = eval '"' + pattern['long'] + '"'
+        print "\033]0;#{Input}\007"
+        $stdout.flush
         exec "#{Cmd} #{long_form} #{Args}"
     end
     puts "Couldn't find a matching host for: #{Input}"
