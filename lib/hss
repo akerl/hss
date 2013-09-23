@@ -3,7 +3,7 @@
 require 'yaml'
 require 'pathname'
 
-Version = '0.1.13'
+Version = '0.1.14'
 
 if ARGV.length == 1 and ARGV[0] == 'version'
     puts Version
@@ -51,8 +51,7 @@ else
     Conf['patterns'].each do |pattern|
         next unless Input.match(pattern['short'])
         long_form = eval '"' + pattern['long'] + '"'
-        print "\033]0;#{Input}\007"
-        $stdout.flush
+        $stdout.syswrite "\033]0;#{Input}\007"
         exec "#{Cmd} #{long_form} #{Args}"
     end
     puts "Couldn't find a matching host for: #{Input}"
