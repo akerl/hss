@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.authors     = ['Les Aker']
   s.email       = 'me@lesaker.org'
   s.bindir      = 'lib'
-  s.files       = ['lib/hss']
+  s.files       = `git ls-files`.split
   s.executables = ['hss']
   s.homepage    = 'https://github.com/akerl/hss'
   s.license     = 'MIT'
