@@ -3,7 +3,7 @@
 require 'yaml'
 require 'pathname'
 
-Version = '0.1.16'
+Version = '0.1.17'
 
 if ARGV.length == 1 and ARGV[0] == 'version'
     puts Version
@@ -24,7 +24,7 @@ def command(input)
 end
 
 def default(a, b)
-    a.nil? ? a : b
+    (a.nil? or a.empty?) ? b : a
 end
 
 possible_paths = [
