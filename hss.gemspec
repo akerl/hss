@@ -8,7 +8,6 @@ Gem::Specification.new do |s|
   s.description = 'Regex-based SSH shortcut tool'
   s.authors     = ['Les Aker']
   s.email       = 'me@lesaker.org'
-  s.bindir      = 'lib'
   s.files       = `git ls-files`.split
   s.executables = ['hss']
   s.homepage    = 'https://github.com/akerl/hss'
