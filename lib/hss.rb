@@ -3,7 +3,7 @@ require 'pathname'
 require 'erb'
 
 module HSS
-    Version = '0.2.1'
+    Version = '0.2.2'
     Default_Config = '~/.hss.yml'
     Default_Library = Pathname.new(__FILE__).realpath.split()[0].to_s + '/helpers'
 
@@ -48,10 +48,6 @@ module HSS
             end
             raise "Couldn't find a matching host for: #{input}"
         end
-
-        def woof()
-            puts "bark"
-        end
     end
 
     class Parser
@@ -69,3 +65,4 @@ module HSS
         end
     end
 end
+
