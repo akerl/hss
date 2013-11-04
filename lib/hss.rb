@@ -3,7 +3,7 @@ require 'pathname'
 require 'erb'
 
 module HSS
-    Version = '0.2.2'
+    Version = '0.2.3'
     Default_Config = '~/.hss.yml'
     Default_Library = Pathname.new(__FILE__).realpath.split()[0].to_s + '/helpers'
 

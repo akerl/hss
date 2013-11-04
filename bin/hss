@@ -20,6 +20,6 @@ Command = (ENV.include? 'HSS_DEBUG') ? 'echo ssh' : 'ssh'
 
 Long_Host = My_Handler.handle Short_Host
 
-$stdout.syswrite "\033]0;#{Short_Host}\007"
+$stdout.syswrite "\033]0;#{Short_Host}\007" if $stdout.tty? and $stdin.tty?
 exec "#{Command} #{Long_Host} #{Args}"
 
