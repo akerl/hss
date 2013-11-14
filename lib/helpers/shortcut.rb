@@ -1,6 +1,6 @@
 class HSS::Parser
-    def shortcut(input)
-        return @config['shortcuts'][input]
-    end
+  def shortcut(input)
+    @config['shortcuts'][input]
+  end
 end
 

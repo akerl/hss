@@ -1,6 +1,6 @@
 class HSS::Parser
-    def command(input)
-        return IO.popen(input) { |cmd| cmd.read }
-    end
+  def command(input)
+    IO.popen(input) { |cmd| cmd.read }
+  end
 end
 

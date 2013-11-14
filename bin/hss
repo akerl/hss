@@ -5,18 +5,18 @@ require 'hss'
 My_Handler = HSS::Handler.new ENV['HSS_CONFIG']
 
 if ARGV == ['version']
-    puts HSS::Version
-    exit
-elsif ARGV == ['help'] or ARGV.empty?
-    puts 'How to use:'
-    puts '(what you type) -> (where it takes you)'
-    My_Handler.patterns.each { |pattern| puts pattern['example'] }
-    exit
+  puts HSS::Version
+  exit
+elsif ARGV == ['help'] || ARGV.empty?
+  puts 'How to use:'
+  puts '(what you type) -> (where it takes you)'
+  My_Handler.patterns.each { |pattern| puts pattern['example'] }
+  exit
 end
 
-Short_Host = ARGV.delete_at( ARGV.find_index { |x| x[0, 1] != '-' } || 0 )
-Args = ARGV.inject('') { |memo, obj| memo += " '" + obj.gsub(/([$"])/, '\1') + "'" }
-Command = (ENV.include? 'HSS_DEBUG') ? 'echo ssh' : 'ssh'
+Short_Host = ARGV.delete_at(ARGV.find_index { |x| x[0, 1] != '-' } || 0)
+Args = ARGV.reduce('') { |a, e| a + " '" + e.gsub(/([$"])/, '\1') + "'" }
+Command = ENV.include?('HSS_DEBUG') ? 'echo ssh' : 'ssh'
 
 Long_Host = My_Handler.handle Short_Host
 
