@@ -1,3 +1,6 @@
+##
+# Expand a shortcode based the config hash
+
 class HSS::Parser
   def expand(input)
     @config['expansions'].each do |long, shorts|
@@ -6,4 +9,3 @@ class HSS::Parser
     fail NameError, "No expansion found for: #{input}"
   end
 end
-

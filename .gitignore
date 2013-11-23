@@ -1,2 +1,4 @@
+pkg/*.gem
+coverage/
+.coveralls.yml
 config.yml
-*.gem

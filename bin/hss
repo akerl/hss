@@ -14,12 +14,11 @@ elsif ARGV == ['help'] || ARGV.empty?
   exit
 end
 
-Short_Host = ARGV.delete_at(ARGV.find_index { |x| x[0, 1] != '-' } || 0)
-Args = ARGV.reduce('') { |a, e| a + " '" + e.gsub(/([$"])/, '\1') + "'" }
-Command = ENV.include?('HSS_DEBUG') ? 'echo ssh' : 'ssh'
+short_host = ARGV.delete_at(ARGV.find_index { |x| x[0, 1] != '-' } || 0)
+args = ARGV.reduce('') { |a, e| a + " '" + e.gsub(/([$"])/, '\1') + "'" }
+command = ENV.include?('HSS_DEBUG') ? 'echo ssh' : 'ssh'
 
-Long_Host = My_Handler.handle Short_Host
+long_host = My_Handler.handle Short_Host
 
-$stdout.syswrite "\033]0;#{Short_Host}\007" if $stdout.tty? and $stdin.tty?
-exec "#{Command} #{Long_Host} #{Args}"
-
+$stdout.syswrite "\033]0;#{short_host}\007" if $stdout.tty? && $stdin.tty?
+exec "#{command} #{long_host} #{args}"
