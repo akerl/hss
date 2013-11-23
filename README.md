@@ -2,7 +2,6 @@ hss
 =========
 
 [![Gem Version](https://badge.fury.io/rb/hss.png)](http://badge.fury.io/rb/hss)
-[![Stories in Ready](https://badge.waffle.io/akerl/hss.png)](http://waffle.io/akerl/hss)
 
 SSH helper that uses regex and fancy expansion to dynamically manage SSH shortcuts
 
