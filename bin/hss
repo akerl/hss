@@ -18,7 +18,7 @@ short_host = ARGV.delete_at(ARGV.find_index { |x| x[0, 1] != '-' } || 0)
 args = ARGV.reduce('') { |a, e| a + " '" + e.gsub(/([$"])/, '\1') + "'" }
 command = ENV.include?('HSS_DEBUG') ? 'echo ssh' : 'ssh'
 
-long_host = My_Handler.handle Short_Host
+long_host = My_Handler.handle short_host
 
 $stdout.syswrite "\033]0;#{short_host}\007" if $stdout.tty? && $stdin.tty?
 exec "#{command} #{long_host} #{args}"

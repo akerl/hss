@@ -1,6 +1,7 @@
 require 'yaml'
 require 'pathname'
 require 'erb'
+require 'version'
 
 ##
 # HSS module provides a helper for SSH shortcuts
