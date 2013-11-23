@@ -6,7 +6,6 @@ require 'erb'
 # HSS module provides a helper for SSH shortcuts
 
 module HSS
-  VERSION = '0.2.5'
   DEFAULT_CONFIG = '~/.hss.yml'
   DEFAULT_LIBRARY = Pathname.new(__FILE__).realpath.split[0].to_s + '/helpers'
 

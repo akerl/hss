@@ -1,5 +1,5 @@
 $:.unshift File.expand_path('../lib/', __FILE__)
-require 'hss.rb'
+require 'version'
 
 Gem::Specification.new do |s|
   s.name        = 'hss'
@@ -15,9 +15,12 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/akerl/hss'
   s.license     = 'MIT'
 
-  %w(rubocop travis-lint rake coveralls rspec fuubar).each do |gem|
-    s.add_development_dependency gem
-  end
+  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'travis-lint'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'coveralls'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'fuubar'
   s.add_development_dependency 'parser', '~> 2.1.0.pre1'
 end
 
