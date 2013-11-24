@@ -10,14 +10,14 @@ describe HSS do
     end
   end
 
-  describe '#new' do
+  describe '#initialize' do
     it 'creates Handler objects' do
       expect(HSS.new(config: config)).to be_an_instance_of HSS::Handler
     end
   end
 
   describe HSS::Handler do
-    describe '#new' do
+    describe '#initialize' do
       it 'creates Handler objects' do
         expect(handler).to be_an_instance_of HSS::Handler
       end
@@ -62,6 +62,43 @@ describe HSS do
       it 'raises LoadError if loading modules fails' do
         options = { config: config, helpers: 'spec/test/bad_helpers' }
         expect { HSS::Handler.new options }.to raise_error LoadError
+      end
+    end
+
+    describe '#handle' do
+      it 'matches input to patterns' do
+        expect(handler.handle 'g').to eql 'git@github.com'
+      end
+      it 'raises an error if no match is found' do
+        expect { handler.handle 'x' }.to raise_exception RuntimeError
+      end
+    end
+  end
+
+  describe HSS::Parser do
+    let(:parser) { HSS::Parser.new(key: 'value') }
+
+    describe '#initialize' do
+      it 'creates a Parser' do
+        expect(parser).to be_an_instance_of HSS::Parser
+      end
+      it 'stores the config for later use' do
+        expect(parser.parse('#{@config[:key]}')).to eql 'value'
+      end
+    end
+
+    describe '#check' do
+      it 'compares an input to a short form' do
+        expect(parser.check('a', '[a-z]')).to be_true
+        expect(parser.check('1', '[a-z]')).to be_false
+      end
+    end
+
+    describe '#parse' do
+      it 'evaluates a long_form using the stored scope' do
+        expect(parser.parse('#{$1}')).to eql ''
+        parser.check('winner', '([a-z]+)')
+        expect(parser.parse('#{$1}')).to eql 'winner'
       end
     end
   end

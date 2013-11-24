@@ -34,7 +34,7 @@ patterns:
     long: '#{command("echo " + $1)}_#{default($2, "9")}_#{expand($3)}_#{shortcut($4)}'
   - note: Nested test
     example: a -> winner
-    short: '^([a-z])$'
+    short: '^nest_([a-z])$'
     long: '#{shortcut(expand($1))}'
 expansions:
   alpha:
