@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe HSS do
   let(:config) { 'spec/config.yml' }
-  let(:invalid) { 'spec/invalid.yml' }
   let(:handler) { HSS::Handler.new(skip_load: true) }
   describe '::VERSION' do
     it 'follows the semantic version scheme' do
@@ -23,6 +22,9 @@ describe HSS do
       end
     end
     describe '#load_config' do
+      let(:invalid) { 'spec/invalid.yml' }
+      let(:incomplete) { 'spec/incomplete.yml' }
+
       it 'loads the specified YAML file' do
         expect(handler.config).to be_nil
         handler.load_config config
@@ -31,6 +33,9 @@ describe HSS do
       end
       it 'raises an error for invalid configs' do
         expect { handler.load_config invalid }.to raise_error RuntimeError
+      end
+      it 'raises an error for configs without patterns' do
+        expect { handler.load_config incomplete }.to raise_error RuntimeError
       end
       it 'uses the default config if none is provided' do
         if File.exists? File.expand_path(HSS::DEFAULT_CONFIG)
