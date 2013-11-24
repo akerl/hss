@@ -43,7 +43,7 @@ module HSS
       path = File.expand_path(config_path || HSS::DEFAULT_CONFIG)
       @config = YAML.load open(path).read
       @patterns = @config.delete('patterns') || fail
-    rescue Psych::SyntaxError, RuntimeError
+    rescue Psych::SyntaxError, RuntimeError, Errno::ENOENT
       raise "Failed to load config: #{config_path}"
     end
 

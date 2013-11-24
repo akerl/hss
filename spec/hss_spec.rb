@@ -37,6 +37,9 @@ describe HSS do
       it 'raises an error for configs without patterns' do
         expect { handler.load_config incomplete }.to raise_error RuntimeError
       end
+      it 'raises an error if the config does not exist' do
+        expect { handler.load_config 'foobaz' }.to raise_error RuntimeError
+      end
       it 'uses the default config if none is provided' do
         if File.exists? File.expand_path(HSS::DEFAULT_CONFIG)
           expect(handler.load_config).to be_an_instance_of Array
