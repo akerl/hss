@@ -23,18 +23,30 @@ module HSS
   # Handlers load configurations and control their use
 
   class Handler
-    attr_reader :patterns, :config
+    attr_reader :patterns, :config, :helpers
 
     ## Make a new handler with a config and parser
 
-    def initialize(params)
-      config_path = params[:config]
-      helper_path = params[:helpers]
-      skip_load = params[:skip_load] || false
-      return if skip_load
-      load_config(config_path)
-      load_parser(helper_path)
+    def initialize(params = {})
+      params = { config: params } if params.is_a? String
+      load_config(params[:config])
+      @helpers = []
+      load_helpers(params[:helpers])
+      @parser = HSS::Parser.new(@config)
     end
+
+    ##
+    # Check patterns for a match and parse the long form
+
+    def handle(input)
+      @patterns.each do |pattern|
+        next unless @parser.check(input, pattern['short'])
+        return @parser.parse(pattern['long'])
+      end
+      fail "Couldn't find a matching host for: #{input}"
+    end
+
+    private
 
     ##
     # Load the config file
@@ -48,29 +60,19 @@ module HSS
     end
 
     ##
-    # Load the parser object
+    # Load helper modules
 
-    def load_parser(helper_path = nil)
+    def load_helpers(helper_path = nil)
       helper_path ||= HSS::DEFAULT_LIBRARY
+      helper_path = File.absolute_path(helper_path)
       Dir.glob(helper_path + '/*').each do |helper|
         begin
-          require_relative helper
-        rescue LoadError
+          require helper
+          @helpers << helper
+        rescue LoadError, SyntaxError
           raise LoadError, "Failed to load helper: #{helper}"
         end
       end
-      @parser = HSS::Parser.new(@config)
-    end
-
-    ##
-    # Check patterns for a match and parse the long form
-
-    def handle(input)
-      @patterns.each do |pattern|
-        next unless @parser.check(input, pattern['short'])
-        return @parser.parse(pattern['long'])
-      end
-      fail "Couldn't find a matching host for: #{input}"
     end
   end
 

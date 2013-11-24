@@ -1,0 +1,2 @@
+# rubocop:disable all
+module

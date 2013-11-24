@@ -1,2 +1,5 @@
+AllCops:
+  Excludes:
+    - spec/test/bad_helpers/module.rb
 Encoding:
   Enabled: false
