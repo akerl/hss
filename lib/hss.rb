@@ -1,6 +1,5 @@
 require 'yaml'
 require 'pathname'
-require 'erb'
 require 'version'
 
 ##
@@ -102,7 +101,8 @@ module HSS
     # Evaluate the long_form using the stored context
 
     def parse(long_form)
-      a = eval '"' + long_form + '"', @match_data # rubocop:disable Eval
+      p long_form
+      a = eval '%Q{' + long_form + '}', @match_data # rubocop:disable Eval
       a == long_form ? a : parse(a)
     end
   end
