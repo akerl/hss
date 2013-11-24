@@ -27,7 +27,11 @@ module HSS
 
     ## Make a new handler with a config and parser
 
-    def initialize(config_path = nil, helper_path = nil)
+    def initialize(params)
+      config_path = params[:config_path]
+      helper_path = params[:helper_path]
+      skip_load = params[:skip_load] || false
+      return if skip_load
       load_config(config_path)
       load_parser(helper_path)
     end

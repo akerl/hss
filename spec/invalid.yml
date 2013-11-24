@@ -1,0 +1,8 @@
+---
+patterns:
+  - note: Invalid config
+    example: crash
+    short: '^fish$'
+    long: 'internet'
+such: config: very: wow
+...
