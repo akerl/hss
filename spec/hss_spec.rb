@@ -72,8 +72,20 @@ describe HSS do
       it 'supports regex capturing' do
         expect(handler.handle 'cap99').to eql 'server99.example.org'
       end
+      it 'supports named captures' do
+        expect(handler.handle 'name_a').to eql 'name_ALPHA'
+      end
       it 'raises an error if no match is found' do
         expect { handler.handle 'x' }.to raise_exception RuntimeError
+      end
+      it 'supports combination of helpers' do
+        expect(handler.handle 'bar__1_b').to eql 'bar_9_alpha_BETA'
+      end
+      it 'supports shallow nested operations' do
+        expect(handler.handle 'nest_a').to eql 'winner'
+      end
+      it 'supports deep nested operations' do
+
       end
     end
   end

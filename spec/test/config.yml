@@ -8,6 +8,10 @@ patterns:
     example: cap1 -> server1.example.org
     short: '^cap(\d+)$'
     long: 'server#{$1}.example.org'
+  - note: Named capture test
+    example: name_a -> ALPHA
+    short: '^name_(?<var>\w+)$'
+    long: 'name_#{shortcut(x["var"])}'
   - note: Command test
     example: cmdfoo -> "foo"
     short: '^cmd_([a-z]+)$'
@@ -37,13 +41,17 @@ patterns:
     short: '^short_([a-z])$'
     long: 'short_#{shortcut($1)}'
   - note: Mixed test
-    example: bar__1_b -> bar_9_alpha_beta
+    example: bar__1_b -> bar_9_alpha_BETA
     short: '([^_]+)_([^_]*)_([^_]+)_([^_]+)'
     long: '#{command("echo " + $1)}_#{default($2, "9")}_#{expand($3)}_#{shortcut($4)}'
-  - note: Nested test
-    example: a -> winner
+  - note: Shallow nested test
+    example: nest_a -> winner
     short: '^nest_([a-z])$'
     long: '#{shortcut(expand($1))}'
+  - note: Deep nested test
+    example: deep_cat_c -> CHARLIE
+    short: '^deep_(?<pet>[a-z]+)_([a-z]+)$'
+    long: '#{expand(x["pet"])}'
 expansions:
   alpha:
     - a
@@ -53,6 +61,10 @@ expansions:
     - b
     - '2'
     - bet
+  '#{shortcut($2)':
+    - fish
+    - dog
+    - cat
 shortcuts:
     a: ALPHA
     b: BETA
