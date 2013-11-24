@@ -7,7 +7,7 @@ class HSS::Parser
   def external(source, key)
     begin
       config = open(File.expand_path(source)) { |f| YAML.load f.read }
-    rescue
+    rescue Psych::SyntaxError, Errno::ENOENT
       raise "Failed to open YAML file: #{source}"
     end
     begin
