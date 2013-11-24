@@ -1,0 +1,7 @@
+---
+test:
+  first:
+    color: blue
+  second:
+    animal: monkey
+...

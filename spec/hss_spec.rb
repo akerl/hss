@@ -69,6 +69,9 @@ describe HSS do
       it 'matches input to patterns' do
         expect(handler.handle 'g').to eql 'git@github.com'
       end
+      it 'supports regex capturing' do
+        expect(handler.handle 'cap99').to eql 'server99.example.org'
+      end
       it 'raises an error if no match is found' do
         expect { handler.handle 'x' }.to raise_exception RuntimeError
       end

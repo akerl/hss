@@ -10,20 +10,28 @@ patterns:
     long: 'server#{$1}.example.org'
   - note: Command test
     example: cmdfoo -> "foo"
-    short: '^cmd([a-z]+)$'
+    short: '^cmd_([a-z]+)$'
     long: '#{command("echo " + $1)}@example.org'
+  - note: Command failure test
+    example: failcmd_foobar -> Error
+    short: '^failcmd_([a-zA-Z]+)$'
+    long: '#{command($1)}'
   - note: Default test
     example: def -> chose_10
-    short: '^def(\d*)$'
+    short: '^def_(\d*)$'
     long: 'chose_#{default($1, "10")}'
   - note: Expansion test
     example: expa -> exp_alpha
-    short: '^exp(\w+)'
+    short: '^exp_(\w+)'
     long: 'exp_#{expand($1)}'
   - note: External test
     example: ext_test.first.color -> external_red
     short: '^ext_([a-z.]+)$'
-    long: 'external_#{external("external_test.yml", $1)}'
+    long: 'external_#{external("spec/test/external_test.yml", $1)}'
+  - note: External failure test
+    example: failext_foo -> Error
+    short: '^failext_([a-z]+)$'
+    long: 'external_#{external("spec/test/" + $1 + ".yml", "tree.frog")}'
   - note: Shortcut test
     example: short_a -> short_ALPHA
     short: '^short_([a-z])$'
