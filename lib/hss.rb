@@ -101,7 +101,6 @@ module HSS
     # Evaluate the long_form using the stored context
 
     def parse(long_form)
-      p long_form
       a = eval '%Q{' + long_form + '}', @match_data # rubocop:disable Eval
       a == long_form ? a : parse(a)
     end
