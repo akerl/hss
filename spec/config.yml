@@ -1,0 +1,53 @@
+---
+patterns:
+  - note: Basic test
+    example: g -> github
+    short: '^g$'
+    long: 'git@github.com'
+  - note: Capture test
+    example: cap1 -> server1.example.org
+    short: '^cap(\d+)$'
+    long: 'server#{$1}.example.org'
+  - note: Command test
+    example: cmdfoo -> "foo"
+    short: '^cmd([a-z]+)$'
+    long: '#{command("echo " + $1)}@example.org'
+  - note: Default test
+    example: def -> chose_10
+    short: '^def(\d*)$'
+    long: 'chose_#{default($1, "10")}'
+  - note: Expansion test
+    example: expa -> exp_alpha
+    short: '^exp(\w+)'
+    long: 'exp_#{expand($1)}'
+  - note: External test
+    example: ext_test.first.color -> external_red
+    short: '^ext_([a-z.]+)$'
+    long: 'external_#{external("external_test.yml", $1)}'
+  - note: Shortcut test
+    example: short_a -> short_ALPHA
+    short: '^short_([a-z])$'
+    long: 'short_#{shortcut($1)}'
+  - note: Mixed test
+    example: bar__1_b -> bar_9_alpha_beta
+    short: '([^_]+)_([^_]*)_([^_]+)_([^_]+)'
+    long: '#{command("echo " + $1)}_#{default($2, "9")}_#{expand($3)}_#{shortcut($4)}'
+  - note: Nested test
+    example: a -> winner
+    short: '^([a-z])$'
+    long: '#{shortcut(expand($1))}'
+expansions:
+  alpha:
+    - a
+    - '1'
+    - alph
+  beta:
+    - b
+    - '2'
+    - bet
+shortcuts:
+    a: ALPHA
+    b: BETA
+    c: CHARLIE
+    alpha: winner
+...
