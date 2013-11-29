@@ -1,8 +1,5 @@
 before_script:
   - "ssh-keygen -N '' -C 'build-test' -f ~/.ssh/id_rsa"
-  - "cat /etc/ssh/sshd_config"
-  - "cat /etc/ssh/ssh_config"
-  - "cat /home/travis/.ssh/config"
 language: ruby
 cache: bundler
 rvm:
