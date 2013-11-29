@@ -1,9 +1,13 @@
+before_script:
+  - 'netstat -lpn'
+  - 'ls -l /etc/init.d/'
+  - 'ping -c3 google.com'
 language: ruby
 cache: bundler
 rvm:
-- ruby-head
-- 2.0.0
-- 1.9.3
+  - ruby-head
+  - 2.0.0
+  - 1.9.3
 notifications:
   email: false
   irc:
