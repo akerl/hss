@@ -85,7 +85,7 @@ describe HSS do
         expect(handler.handle 'nest_a').to eql 'winner'
       end
       it 'supports deep nested operations' do
-
+        expect(handler.handle 'deep_cat_c').to eql 'CHARLIE'
       end
     end
   end

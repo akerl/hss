@@ -50,8 +50,12 @@ patterns:
     long: '#{shortcut(expand($1))}'
   - note: Deep nested test
     example: deep_cat_c -> CHARLIE
-    short: '^deep_(?<pet>[a-z]+)_([a-z]+)$'
+    short: '^deep_(?<pet>[a-z]+)_(?<letter>[a-z]+)$'
     long: '#{expand(x["pet"])}'
+  - note: Connection test
+    example: l -> localhost
+    short: '^l$'
+    long: '-A localhost -p 22'
 expansions:
   alpha:
     - a
@@ -61,7 +65,7 @@ expansions:
     - b
     - '2'
     - bet
-  '#{shortcut($2)':
+  '#{shortcut(x["letter"])}':
     - fish
     - dog
     - cat

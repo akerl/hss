@@ -5,7 +5,7 @@ require 'hss'
 My_Handler = HSS::Handler.new(config: ENV['HSS_CONFIG'])
 
 if ARGV == ['version']
-  puts HSS::Version
+  puts HSS::VERSION
   exit
 elsif ARGV == ['help'] || ARGV.empty?
   puts 'How to use:'

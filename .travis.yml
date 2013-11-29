@@ -1,7 +1,5 @@
 before_script:
-  - 'netstat -lpn'
-  - 'ls -l /etc/init.d/'
-  - 'ping -c3 google.com'
+  - "ssh-keygen -N '' -C 'build-test' -f ~/.ssh/id_rsa"
 language: ruby
 cache: bundler
 rvm:

@@ -16,6 +16,20 @@ gem install hss
 ln -s /path/to/your/config.yml ~/.hss.yml
 ```
 
+### SCP usage
+
+This script can be used by SCP and other things that use SSH as a transport. To use it with SSH, just specify hss for the -S flag:
+
+```
+scp -S hss host:files/ other_host:location/
+```
+
+You can alias this for the greater good:
+
+```
+alias pcs='scp -S hss'
+```
+
 ## Configuration
 
 1. You can put your configuration in ~/.hss.yml or another file specified by the "HSS\_CONFIG" environment variable.
