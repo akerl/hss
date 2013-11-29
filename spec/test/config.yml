@@ -55,7 +55,7 @@ patterns:
   - note: Connection test
     example: l -> localhost
     short: '^l$'
-    long: '-A localhost -p 22'
+    long: '-o StrictHostKeyChecking=no -A localhost -p 22'
 expansions:
   alpha:
     - a
