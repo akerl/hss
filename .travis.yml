@@ -1,6 +1,6 @@
 before_script:
   - "ssh-keygen -N '' -C 'build-test' -f ~/.ssh/id_rsa"
-  - "cp .ssh/id_rsa.pub .ssh/authorized_keys"
+  - "cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys"
 language: ruby
 cache: bundler
 rvm:
