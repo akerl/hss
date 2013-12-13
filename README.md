@@ -18,7 +18,7 @@ ln -s /path/to/your/config.yml ~/.hss.yml
 
 ### SCP usage
 
-This script can be used by SCP and other things that use SSH as a transport. To use it with SSH, just specify hss for the -S flag:
+This script can be used by SCP and other things that use SSH as a transport. To use it with SCP, just specify hss for the -S flag:
 
 ```
 scp -S hss host:files/ other_host:location/
