@@ -42,7 +42,7 @@ module HSS
         next unless @parser.check(input, pattern['short'])
         return @parser.parse(pattern['long'])
       end
-      fail "Couldn't find a matching host for: #{input}"
+      fail NameError, "Couldn't find a matching host for: #{input}"
     end
 
     private

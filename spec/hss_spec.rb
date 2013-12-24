@@ -76,7 +76,7 @@ describe HSS do
         expect(handler.handle 'name_a').to eql 'name_ALPHA'
       end
       it 'raises an error if no match is found' do
-        expect { handler.handle 'x' }.to raise_exception RuntimeError
+        expect { handler.handle 'x' }.to raise_exception NameError
       end
       it 'supports combination of helpers' do
         expect(handler.handle 'bar__1_b').to eql 'bar_9_alpha_BETA'
