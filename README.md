@@ -76,6 +76,19 @@ fish:
 1. Run `hss help` for a list of available commands
 2. Run `hss $command` to do that thing
 
+## Falling back to another command
+
+If you define the environment variable "HSS_PASS", hss will fall back to that command if it fails to find a match:
+
+```
+# export HSS_PASS='ssh'
+
+# hss git@github.com
+PTY allocation request failed on channel 0
+Hi akerl! You've successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+```
+
 ## Debugging
 
 If you want hss to print the command it would have run rather than executing it, you just need to set the HSS\_DEBUG environment variable to something:
