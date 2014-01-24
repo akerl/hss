@@ -6,7 +6,7 @@ describe HSS do
 
   describe '::VERSION' do
     it 'follows the semantic version scheme' do
-      expect(HSS::VERSION).to match /\d+\.\d+\.\d+/
+      expect(HSS::VERSION).to match(/\d+\.\d+\.\d+/)
     end
   end
 

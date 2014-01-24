@@ -21,5 +21,5 @@ task :travislint do
   print 'There may be an issue with your .travis.yml' unless system('travis-lint')
 end
 
-task default: [:spec, :travislint, :rubocop, :build, :install]
-task release: [:bundle]
+task :default => [:spec, :travislint, :rubocop, :build, :install]
+task :release => [:bundle]
