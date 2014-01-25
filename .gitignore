@@ -1,3 +1,4 @@
+.bundle/
 pkg/*.gem
 coverage/
 .coveralls.yml
