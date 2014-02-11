@@ -27,7 +27,7 @@ module HSS
     ## Make a new handler with a config and parser
 
     def initialize(params = {})
-      params = { config: params } if params.is_a? String
+      params = { :config => params } if params.is_a? String
       load_config(params[:config])
       @helpers = []
       load_helpers(params[:helpers])
@@ -63,7 +63,7 @@ module HSS
 
     def load_helpers(helper_path = nil)
       helper_path ||= HSS::DEFAULT_LIBRARY
-      helper_path = File.absolute_path(helper_path)
+      helper_path = File.expand_path(helper_path)
       Dir.glob(helper_path + '/*').each do |helper|
         begin
           require helper
