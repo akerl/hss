@@ -2,7 +2,6 @@ require 'English'
 
 ##
 # Runs a shell command and returns the output
-
 class HSS::Parser
   private
 

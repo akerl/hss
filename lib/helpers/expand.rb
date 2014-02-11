@@ -1,6 +1,5 @@
 ##
 # Expand a shortcode based the config hash
-
 class HSS::Parser
   private
 

@@ -2,7 +2,6 @@ require 'yaml'
 
 ##
 # Load values from an external YAML hash
-
 class HSS::Parser
   private
 

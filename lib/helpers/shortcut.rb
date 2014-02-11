@@ -1,6 +1,5 @@
 ##
 # Allow shortcut expansion from the config
-
 class HSS::Parser
   private
 

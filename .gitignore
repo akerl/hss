@@ -3,3 +3,4 @@ pkg/*.gem
 coverage/
 .coveralls.yml
 scp_test
+Gemfile.lock

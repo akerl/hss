@@ -3,3 +3,5 @@ AllCops:
     - spec/test/bad_helpers/module.rb
 Encoding:
   Enabled: false
+HashSyntax:
+  Enabled: false

@@ -4,7 +4,6 @@ require 'version'
 
 ##
 # HSS module provides a helper for SSH shortcuts
-
 module HSS
   DEFAULT_CONFIG = '~/.hss.yml'
   DEFAULT_LIBRARY = Pathname.new(__FILE__).realpath.split[0].to_s + '/helpers'
@@ -20,7 +19,6 @@ module HSS
 
   ##
   # Handlers load configurations and control their use
-
   class Handler
     attr_reader :patterns, :config, :helpers
 
@@ -77,7 +75,6 @@ module HSS
 
   ##
   # Parser objects exist as containers for helper methods
-
   class Parser
     ##
     # The config is scoped here so it is available to helpers
