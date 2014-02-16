@@ -1,12 +1,12 @@
 hss
 =========
 
-[![Gem Version](https://badge.fury.io/rb/hss.png)](http://badge.fury.io/rb/hss)
-[![Dependency Status](https://gemnasium.com/akerl/hss.png)](https://gemnasium.com/akerl/hss)
-[![Code Climate](https://codeclimate.com/github/akerl/hss.png)](https://codeclimate.com/github/akerl/hss)
-[![Coverage Status](https://coveralls.io/repos/akerl/hss/badge.png)](https://coveralls.io/r/akerl/hss)
-[![Build Status](https://travis-ci.org/akerl/hss.png?branch=master)](https://travis-ci.org/akerl/hss)
-[![MIT Licensed](http://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
+[![Gem Version](https://img.shields.io/gem/v/hss.svg)](https://rubygems.org/gems/hss)
+[![Dependency Status](https://img.shields.io/gemnasium/akerl/hss.svg)](https://gemnasium.com/akerl/hss)
+[![Code Climate](https://img.shields.io/codeclimate/github/akerl/hss.svg)](https://codeclimate.com/github/akerl/hss)
+[![Coverage Status](https://img.shields.io/coveralls/akerl/hss.svg)](https://coveralls.io/r/akerl/hss)
+[![Build Status](https://img.shields.io/travis/akerl/hss.svg)](https://travis-ci.org/akerl/hss)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
 SSH helper that uses regex and fancy expansion to dynamically manage SSH shortcuts
 
