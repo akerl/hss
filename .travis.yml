@@ -1,17 +1,16 @@
 before_script:
-  - "ssh-keygen -N '' -C 'build-test' -f ~/.ssh/id_rsa"
-  - "cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys"
+- ssh-keygen -N '' -C 'build-test' -f ~/.ssh/id_rsa
+- cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 language: ruby
 cache: bundler
 rvm:
-  - 2.1.0
-  - 2.0.0
-  - 1.9.3
+- 2.1.0
+- 2.0.0
+- 1.9.3
 notifications:
   email: false
   irc:
     channels:
-      - ircs://irc.oftc.net:6697#akerl
-    channel_key: sekrit
+    - secure: Z3ypJ8MOTwGDrwpqR6mHidleA9jAp1cCV05ElH5VjS4fuWWZ3uBAhFVssKjfbB9fQl+4nesJpHO5cfOAXNBX1UO1w7d87692zgImux1MRo2P5n2sR+yGO/ZTtYyCF0oQF2u1RU4bybI91f8mX69tcM4f+Ggi3yjQvbubnaXVPn0=
     template:
-      - '%{repository}/%{branch}/%{build_number}: %{message} -- %{build_url}'
+    - "%{repository}/%{branch}/%{build_number}: %{message} -- %{build_url}"
