@@ -89,7 +89,7 @@ module HSS
 
     def check(input, short_form)
       return false unless input.match short_form
-      x = Regexp.last_match # rubocop:disable UselessSetterCall
+      x = Regexp.last_match # rubocop:disable UselessAssignment
       @match_data = binding
       true
     end

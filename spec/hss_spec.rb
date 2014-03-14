@@ -41,7 +41,7 @@ describe HSS do
         expect { HSS::Handler.new 'foobaz' }.to raise_error RuntimeError
       end
       it 'uses the default config if none is provided' do
-        if File.exists? File.expand_path(HSS::DEFAULT_CONFIG)
+        if File.exist? File.expand_path(HSS::DEFAULT_CONFIG)
           expect(HSS::Handler.new.config).to be_an_instance_of Hash
         else
           expect { HSS::Handler.new }.to raise_error RuntimeError
