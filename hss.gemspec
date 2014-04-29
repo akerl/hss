@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.test_files  = `git ls-files spec/*`.split
   s.executables = ['hss']
 
-  s.add_development_dependency 'rubocop', '~> 0.20.0'
+  s.add_development_dependency 'rubocop', '~> 0.20.1'
   s.add_development_dependency 'rake', '~> 10.3.0'
   s.add_development_dependency 'coveralls', '~> 0.7.0'
   s.add_development_dependency 'rspec', '~> 2.14.1'
