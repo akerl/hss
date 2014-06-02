@@ -52,7 +52,7 @@ describe HSS do
     describe '#load_helpers' do
       it 'loads helper modules' do
         expect(handler.helpers).to be_an_instance_of Array
-        expect(handler.helpers).to have_at_least(3).items
+        expect(handler.helpers.size).to be >= 3
       end
       it 'accepts a helper_path' do
         h = HSS::Handler.new(config: config, helpers: 'spec/test/good_helpers')
@@ -104,8 +104,8 @@ describe HSS do
 
     describe '#check' do
       it 'compares an input to a short form' do
-        expect(parser.check('a', '[a-z]')).to be_true
-        expect(parser.check('1', '[a-z]')).to be_false
+        expect(parser.check('a', '[a-z]')).to be_truthy
+        expect(parser.check('1', '[a-z]')).to be_falsey
       end
     end
 

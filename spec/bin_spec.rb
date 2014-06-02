@@ -21,6 +21,6 @@ describe 'HSS script' do
   end
   it 'connects via SCP' do
     `scp -S hss spec/test/config.yml l:#{Dir.pwd}/scp_test`
-    expect(File.exist? 'scp_test').to be_true
+    expect(File.exist? 'scp_test').to be_truthy
   end
 end
