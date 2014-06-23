@@ -50,7 +50,8 @@ module HSS
 
     def load_config(config_path = nil)
       path = File.expand_path(config_path || HSS::DEFAULT_CONFIG)
-      @config = YAML.load open(path).read
+      files = path.split(':').map { |x| YAML.load File.read x }
+      @config = files.reverse.reduce(&:deep_merge)
       @patterns = @config.delete('patterns') || fail
     rescue Psych::SyntaxError, RuntimeError, Errno::ENOENT
       raise "Failed to load config: #{config_path}"
@@ -100,6 +101,25 @@ module HSS
     def parse(long_form)
       a = eval '%Q{' + long_form + '}', @match_data # rubocop:disable Eval
       a == long_form ? a : parse(a)
+    end
+  end
+end
+
+##
+# Time to monkeypatch Hash to support smarter merging
+class Hash
+  ##
+  # Define a method to merge config hashes
+
+  def deep_merge(new)
+    merge(new) do |_, oldval, newval|
+      if oldval.is_a? Hash
+        deep_merge oldval, newval
+      elsif oldval.is_a? Array
+        oldval + newval
+      else
+        newval
+      end
     end
   end
 end

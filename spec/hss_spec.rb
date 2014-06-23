@@ -26,6 +26,7 @@ describe HSS do
     describe '#load_config' do
       let(:invalid) { 'spec/test/invalid.yml' }
       let(:incomplete) { 'spec/test/incomplete.yml' }
+      let(:other) { 'spec/test/other.yml' }
 
       it 'loads the specified YAML file' do
         expect(handler.config).to be_an_instance_of Hash
@@ -46,6 +47,15 @@ describe HSS do
         else
           expect { HSS::Handler.new }.to raise_error RuntimeError
         end
+      end
+      it 'supports loading multiple configs' do
+        handler = HSS::Handler.new(config: "#{config}:#{other}")
+        expect(handler.patterns.map { |x| x['note'] }).to include(
+          'Basic test',
+          'Other test',
+          'Connection test'
+        )
+        expect(handler.patterns.first['long']).to match(/^new/)
       end
     end
 

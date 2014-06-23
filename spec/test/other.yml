@@ -1,0 +1,11 @@
+---
+patterns:
+  - note: Basic test
+    example: g -> github
+    short: '^g$'
+    long: 'new@github.com'
+  - note: Other test
+    example: z -> other
+    short: '^z$'
+    long: 'other@example.com'
+...
