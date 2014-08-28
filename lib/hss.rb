@@ -1,12 +1,12 @@
 require 'yaml'
 require 'pathname'
-require 'version'
+require 'hss/version'
 
 ##
 # HSS module provides a helper for SSH shortcuts
 module HSS
   DEFAULT_CONFIG = '~/.hss.yml'
-  DEFAULT_LIBRARY = Pathname.new(__FILE__).realpath.split[0].to_s + '/helpers'
+  DEFAULT_LIB = Pathname.new(__FILE__).realpath.split[0].to_s + '/hss/helpers'
 
   class << self
     ##
@@ -61,7 +61,7 @@ module HSS
     # Load helper modules
 
     def load_helpers(helper_path = nil)
-      helper_path ||= HSS::DEFAULT_LIBRARY
+      helper_path ||= HSS::DEFAULT_LIB
       helper_path = File.expand_path(helper_path)
       Dir.glob(helper_path + '/*').each do |helper|
         begin
