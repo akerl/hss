@@ -25,10 +25,18 @@ This script can be used by SCP and other things that use SSH as a transport. To 
 scp -S hss host:files/ other_host:location/
 ```
 
+To use it with rsync, use the -e flag:
+
+```
+rsync -e hss files/ host:location/
+```
+
+
 You can alias this for the greater good:
 
 ```
 alias pcs='scp -S hss'
+alias cnysr='rsync -e hss'
 ```
 
 ## Configuration
