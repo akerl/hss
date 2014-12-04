@@ -31,13 +31,14 @@ To use it with rsync, use the -e flag:
 rsync -e hss files/ host:location/
 ```
 
-
 You can alias this for the greater good:
 
 ```
 alias pcs='scp -S hss'
 alias cnysr='rsync -e hss'
 ```
+
+**Caveat:** Because of how hss processes hosts, it will only operate on the first host-like thing in your command. As such, using scp to copy a local file to an hss'd host will work, as will the inverse, and copying a file from an hss'd host to a normal host works, but not the inverse.
 
 ## Configuration
 
