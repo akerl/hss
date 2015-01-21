@@ -3,16 +3,16 @@ before_script:
 - cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 language: ruby
 cache: bundler
+sudo: false
 rvm:
-- 2.1.2
-- 2.1.1
-- 2.1.0
-- 2.0.0
-- 1.9.3
+- 2.2.0
+- 2.1.5
+- 2.0.0-p598
+- 1.9.3-p551
 notifications:
   email: false
   irc:
     channels:
-    - secure: Z3ypJ8MOTwGDrwpqR6mHidleA9jAp1cCV05ElH5VjS4fuWWZ3uBAhFVssKjfbB9fQl+4nesJpHO5cfOAXNBX1UO1w7d87692zgImux1MRo2P5n2sR+yGO/ZTtYyCF0oQF2u1RU4bybI91f8mX69tcM4f+Ggi3yjQvbubnaXVPn0=
+    - irc.oftc.net#akerl
     template:
     - "%{repository}/%{branch}/%{build_number}: %{message} -- %{build_url}"
