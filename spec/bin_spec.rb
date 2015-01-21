@@ -6,7 +6,7 @@ describe 'HSS script' do
   end
 
   it 'prints the version' do
-    expect(`hss version`.strip).to eql HSS::VERSION
+    expect(`hss version`.strip).to match(/\d+\.\d+\.\d+/)
   end
   it 'prints a list of examples' do
     expect(`hss`.split("\n").first).to eql 'How to use:'
