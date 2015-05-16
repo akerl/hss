@@ -16,6 +16,11 @@ describe 'HSS script' do
     expect(`hss g`.strip).to eql 'ssh git@github.com'
     ENV.delete 'HSS_DEBUG'
   end
+  it 'support overriding the base command' do
+    ENV['HSS_COMMAND'] = 'echo'
+    expect(`hss g`.strip).to eql 'git@github.com'
+    ENV.delete 'HSS_COMMAND'
+  end
   it 'connects via SSH' do
     expect(`hss l echo 'hello \\"world\\"'`.strip).to eql "hello \"world\""
   end
