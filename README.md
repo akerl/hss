@@ -99,6 +99,10 @@ Hi akerl! You've successfully authenticated, but GitHub does not provide shell a
 Connection to github.com closed.
 ```
 
+## Changing the default command
+
+By default, hss prepends "ssh " to the long command from your configuration file. If you're using something different (like mosh), you can set HSS_COMMAND in your environment to override that.
+
 ## Debugging
 
 If you want hss to print the command it would have run rather than executing it, you just need to set the HSS\_DEBUG environment variable to something:

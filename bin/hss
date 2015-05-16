@@ -16,7 +16,8 @@ end
 
 short_host = ARGV.delete_at(ARGV.find_index { |x| x[0, 1] != '-' } || 0)
 args = ARGV.reduce('') { |a, e| a + " '" + e.gsub(/([$"])/, '\1') + "'" }
-command = ENV.include?('HSS_DEBUG') ? 'echo ssh' : 'ssh'
+command = ENV['HSS_COMMAND'] || 'ssh'
+command.prepend('echo ') if ENV['HSS_DEBUG']
 
 begin
   long_host = My_Handler.handle short_host
