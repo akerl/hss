@@ -3,9 +3,9 @@ hss
 
 [![Gem Version](https://img.shields.io/gem/v/hss.svg)](https://rubygems.org/gems/hss)
 [![Dependency Status](https://img.shields.io/gemnasium/akerl/hss.svg)](https://gemnasium.com/akerl/hss)
-[![Code Climate](https://img.shields.io/codeclimate/github/akerl/hss.svg)](https://codeclimate.com/github/akerl/hss)
-[![Coverage Status](https://img.shields.io/coveralls/akerl/hss.svg)](https://coveralls.io/r/akerl/hss)
-[![Build Status](https://img.shields.io/travis/akerl/hss.svg)](https://travis-ci.org/akerl/hss)
+[![Build Status](https://img.shields.io/circleci/project/akerl/hss.svg)](https://circleci.com/gh/akerl/hss)
+[![Coverage Status](https://img.shields.io/codecov/c/github/akerl/hss.svg)](https://codecov.io/github/akerl/hss)
+[![Code Quality](https://img.shields.io/codacy/d7679375e294408b8627aa66d1b57445.svg)](https://www.codacy.com/app/akerl/hss)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
 SSH helper that uses regex and fancy expansion to dynamically manage SSH shortcuts
