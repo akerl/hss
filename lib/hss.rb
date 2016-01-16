@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'yaml'
 require 'pathname'
 require 'hss/version'
@@ -5,7 +6,7 @@ require 'hss/version'
 ##
 # HSS module provides a helper for SSH shortcuts
 module HSS
-  DEFAULT_CONFIG = '~/.hss.yml'
+  DEFAULT_CONFIG = '~/.hss.yml'.freeze
   DEFAULT_LIB = Pathname.new(__FILE__).realpath.split[0].to_s + '/hss/helpers'
 
   class << self

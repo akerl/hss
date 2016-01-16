@@ -6,7 +6,7 @@ describe HSS::Parser do
 
   describe '#command' do
     it 'runs shell commands' do
-      expect(handler.handle 'cmd_bar').to eql 'bar@example.org'
+      expect(handler.handle('cmd_bar')).to eql 'bar@example.org'
     end
     context 'if the command is invalid' do
       it 'raises an error' do

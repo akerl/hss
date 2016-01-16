@@ -6,8 +6,8 @@ describe HSS::Parser do
 
   describe '#shortcut' do
     it 'expands shortcut text' do
-      expect(handler.handle 'short_a').to eql 'short_ALPHA'
-      expect(handler.handle 'short_b').to eql 'short_BETA'
+      expect(handler.handle('short_a')).to eql 'short_ALPHA'
+      expect(handler.handle('short_b')).to eql 'short_BETA'
     end
     context 'when an invalid shortcut is used' do
       it 'raises an error' do

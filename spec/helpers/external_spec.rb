@@ -6,7 +6,7 @@ describe HSS::Parser do
 
   describe '#external' do
     it 'reads values from a YAML file' do
-      expect(handler.handle 'ext_test.first.color').to eql 'external_blue'
+      expect(handler.handle('ext_test.first.color')).to eql 'external_blue'
     end
     context 'when a key is not found' do
       it 'raises an error' do

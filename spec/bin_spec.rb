@@ -22,10 +22,10 @@ describe 'HSS script' do
     ENV.delete 'HSS_COMMAND'
   end
   it 'connects via SSH' do
-    expect(`hss l echo 'hello \\"world\\"'`.strip).to eql "hello \"world\""
+    expect(`hss l echo 'hello \\"world\\"'`.strip).to eql 'hello "world"'
   end
   it 'connects via SCP' do
     `scp -S hss spec/test/config.yml l:#{Dir.pwd}/scp_test`
-    expect(File.exist? 'scp_test').to be_truthy
+    expect(File.exist?('scp_test')).to be_truthy
   end
 end

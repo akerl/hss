@@ -6,8 +6,8 @@ describe HSS::Parser do
 
   describe '#expand' do
     it 'matches keywords in a mapping' do
-      expect(handler.handle 'exp_a').to eql 'exp_alpha'
-      expect(handler.handle 'exp_2').to eql 'exp_beta'
+      expect(handler.handle('exp_a')).to eql 'exp_alpha'
+      expect(handler.handle('exp_2')).to eql 'exp_beta'
     end
     context 'when no match is found' do
       it 'raises an error' do
