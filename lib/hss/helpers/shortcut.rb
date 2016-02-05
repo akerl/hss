@@ -5,7 +5,7 @@ module HSS
     private
 
     def shortcut(input)
-      @config['shortcuts'][input] || fail
+      @config['shortcuts'][input] || raise
     rescue
       raise NameError, "Shortcut does not exist #{input}"
     end

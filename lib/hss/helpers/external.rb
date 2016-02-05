@@ -13,7 +13,7 @@ module HSS
         raise "Failed to open YAML file: #{source}"
       end
       begin
-        key.split('.').reduce(config) { |a, e| a[e] } || fail
+        key.split('.').reduce(config) { |a, e| a[e] } || raise
       rescue
         raise NameError, "Key not found in YAML: #{key}"
       end

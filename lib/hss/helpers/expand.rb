@@ -8,7 +8,7 @@ module HSS
       @config['expansions'].each do |long, shorts|
         return long if shorts.include? input
       end
-      fail NameError, "No expansion found for: #{input}"
+      raise NameError, "No expansion found for: #{input}"
     end
   end
 end

@@ -41,7 +41,7 @@ module HSS
         next unless @parser.check(input, pattern['short'])
         return @parser.parse(pattern['long'])
       end
-      fail NameError, "Couldn't find a matching host for: #{input}"
+      raise NameError, "Couldn't find a matching host for: #{input}"
     end
 
     private
@@ -53,7 +53,7 @@ module HSS
       path = File.expand_path(config_path || HSS::DEFAULT_CONFIG)
       files = path.split(':').map { |x| YAML.load File.read x }
       @config = files.reverse.reduce(&:deep_merge)
-      @patterns = @config.delete('patterns') || fail
+      @patterns = @config.delete('patterns') || raise
     rescue Psych::SyntaxError, RuntimeError, Errno::ENOENT
       raise "Failed to load config: #{config_path}"
     end

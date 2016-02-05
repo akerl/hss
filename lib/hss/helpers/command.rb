@@ -8,7 +8,7 @@ module HSS
 
     def command(input)
       result = IO.popen(input) { |cmd| cmd.read.chomp }
-      fail "Command failed: #{input}" unless $CHILD_STATUS == 0
+      raise("Command failed: #{input}") unless $CHILD_STATUS == 0
       result
     rescue Errno::ENOENT
       raise "Command not found: #{input}"
