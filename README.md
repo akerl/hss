@@ -42,7 +42,7 @@ alias cnysr='rsync -e hss'
 
 ## Configuration
 
-1. You can put your configuration in ~/.hss.yml or another file specified by the "HSS\_CONFIG" environment variable.
+1. You can put your configuration in ~/.hss.yml or another file specified by the "HSS\_CONFIG" environment variable.  You can refer to multiple config files in "HSS\_CONFIG" by separating them with colons and the configs will be merged (HSS\_CONFIG=$HOME/.hss-shared.yml:$HOME/.hss-mine.yml).
 2. The only required configuration section is "patterns", which contains an array of hashes with the following attributes:
   * note: Name of this pattern ("my servers")
   * example: Shows how this is used ("jimbo -> root@jimbo.example.org")
