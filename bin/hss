@@ -15,7 +15,9 @@ elsif ARGV == ['help'] || ARGV.empty?
 end
 
 short_host = ARGV.delete_at(ARGV.find_index { |x| x[0, 1] != '-' } || 0)
-args = ARGV.reduce('') { |a, e| a + " '" + e.gsub(/([$"])/, '\1') + "'" }
+args = ARGV.reduce('') do |acc, elem|
+  acc + " '" + elem.gsub(/([$"])/, '\1') + "'"
+end
 command = ENV['HSS_COMMAND'] || 'ssh'
 command.prepend('echo ') if ENV['HSS_DEBUG']
 
