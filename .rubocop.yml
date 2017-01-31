@@ -5,3 +5,5 @@ Encoding:
   Enabled: false
 HashSyntax:
   Enabled: false
+Metrics/BlockLength:
+  Enabled: false

@@ -51,7 +51,7 @@ module HSS
 
     def load_config(config_path = nil)
       path = File.expand_path(config_path || HSS::DEFAULT_CONFIG)
-      files = path.split(':').map { |x| YAML.load File.read x }
+      files = path.split(':').map { |x| YAML.safe_load File.read x }
       @config = files.reverse.reduce(&:deep_merge)
       @patterns = @config.delete('patterns') || raise
     rescue Psych::SyntaxError, RuntimeError, Errno::ENOENT

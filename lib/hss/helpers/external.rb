@@ -8,7 +8,7 @@ module HSS
 
     def external(source, key)
       begin
-        config = open(File.expand_path(source)) { |f| YAML.load f.read }
+        config = open(File.expand_path(source)) { |f| YAML.safe_load f.read }
       rescue Psych::SyntaxError, Errno::ENOENT
         raise "Failed to open YAML file: #{source}"
       end
