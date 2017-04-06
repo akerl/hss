@@ -55,7 +55,8 @@ module HSS
       files = path.split(':').map { |x| YAML.safe_load File.read x }
       @config = files.reverse.reduce(&:deep_merge)
       @patterns = @config.delete('patterns') || raise
-    rescue Psych::SyntaxError, RuntimeError, Errno::ENOENT # rubocop:disable Lint/ShadowedException Metrics/LineLength
+    # rubocop:disable Lint/ShadowedException
+    rescue Psych::SyntaxError, RuntimeError, Errno::ENOENT
       raise "Failed to load config: #{config_path}"
     end
 
