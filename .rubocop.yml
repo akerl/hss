@@ -1,9 +1,2 @@
-AllCops:
-  Exclude:
-    - spec/test/bad_helpers/module.rb
-Encoding:
-  Enabled: false
-HashSyntax:
-  Enabled: false
-Metrics/BlockLength:
-  Enabled: false
+inherit_gem:
+  goodcop: .rubocop.yml
