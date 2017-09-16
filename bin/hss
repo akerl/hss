@@ -2,7 +2,7 @@
 
 require 'hss'
 
-My_Handler = HSS::Handler.new(:config => ENV['HSS_CONFIG'])
+My_Handler = HSS::Handler.new(config: ENV['HSS_CONFIG'])
 
 if ARGV == ['version']
   puts HSS::VERSION

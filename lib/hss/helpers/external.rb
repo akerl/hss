@@ -14,7 +14,7 @@ module HSS
       end
       begin
         key.split('.').reduce(config) { |acc, elem| acc[elem] } || raise
-      rescue
+      rescue StandardError
         raise NameError, "Key not found in YAML: #{key}"
       end
     end

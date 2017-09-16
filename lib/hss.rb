@@ -27,7 +27,7 @@ module HSS
     ## Make a new handler with a config and parser
 
     def initialize(params = {})
-      params = { :config => params } if params.is_a? String
+      params = { config: params } if params.is_a? String
       load_config(params[:config])
       @helpers = []
       load_helpers(params[:helpers])

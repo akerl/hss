@@ -101,6 +101,7 @@ describe HSS do
   end
 
   describe HSS::Parser do
+    # rubocop:disable Lint/InterpolationCheck
     let(:parser) { HSS::Parser.new(key: 'value') }
 
     describe '#initialize' do
@@ -126,5 +127,6 @@ describe HSS do
         expect(parser.parse('#{$1}')).to eql 'winner'
       end
     end
+    # rubocop:enable Lint/InterpolationCheck
   end
 end
