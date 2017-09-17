@@ -15,7 +15,7 @@ unless {}.respond_to? :dig
   # Define dig method if it didn't exist (because Ruby predates 2.3)
   class Hash
     def dig(arg, *args)
-      self[arg] ? self[arg].dig(args) : nil
+      self[arg] ? self[arg].dig(*args) : nil
     end
   end
 end
