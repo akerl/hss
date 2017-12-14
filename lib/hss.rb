@@ -59,6 +59,7 @@ module HSS
     rescue Psych::SyntaxError, RuntimeError, Errno::ENOENT
       raise "Failed to load config: #{config_path}"
     end
+    # rubocop:enable Lint/ShadowedException
 
     ##
     # Load helper modules
