@@ -2,7 +2,7 @@ hss
 =========
 
 [![Gem Version](https://img.shields.io/gem/v/hss.svg)](https://rubygems.org/gems/hss)
-[![Build Status](https://img.shields.io/circleci/project/akerl/hss/master.svg)](https://circleci.com/gh/akerl/hss)
+[![Build Status](https://img.shields.io/travis/com/akerl/hss.svg)](https://travis-ci.com/akerl/hss)
 [![Coverage Status](https://img.shields.io/codecov/c/github/akerl/hss.svg)](https://codecov.io/github/akerl/hss)
 [![Code Quality](https://img.shields.io/codacy/d7679375e294408b8627aa66d1b57445.svg)](https://www.codacy.com/app/akerl/hss)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
