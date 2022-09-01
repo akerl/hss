@@ -21,11 +21,11 @@ describe 'HSS script' do
     expect(`hss g`.strip).to eql 'git@github.com'
     ENV.delete 'HSS_COMMAND'
   end
-  #it 'connects via SSH' do
+  # it 'connects via SSH' do
   #  expect(`hss l echo 'hello \\"world\\"'`.strip).to eql 'hello "world"'
-  #end
-  #it 'connects via SCP' do
+  # end
+  # it 'connects via SCP' do
   #  `scp -S hss spec/test/config.yml l:#{Dir.pwd}/scp_test`
   #  expect(File.exist?('scp_test')).to be_truthy
-  #end
+  # end
 end
