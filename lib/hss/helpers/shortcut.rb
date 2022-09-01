@@ -5,7 +5,7 @@ module HSS
     private
 
     def shortcut(input)
-      @config.dig('shortcuts', input) || raise(NameError, "Shortcut does not exist #{input}") # rubocop:disable Metrics/LineLength
+      @config.dig('shortcuts', input) || raise(NameError, "Shortcut does not exist #{input}")
     end
   end
 end

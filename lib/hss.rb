@@ -7,8 +7,8 @@ require 'hss/version'
 ##
 # HSS module provides a helper for SSH shortcuts
 module HSS
-  DEFAULT_CONFIG = '~/.hss.yml'.freeze
-  DEFAULT_LIB = Pathname.new(__FILE__).realpath.split[0].to_s + '/hss/helpers'
+  DEFAULT_CONFIG = '~/.hss.yml'
+  DEFAULT_LIB = "#{Pathname.new(__FILE__).realpath.split[0]}/hss/helpers"
 
   class << self
     ##
@@ -67,13 +67,11 @@ module HSS
     def load_helpers(helper_path = nil)
       helper_path ||= HSS::DEFAULT_LIB
       helper_path = File.expand_path(helper_path)
-      Dir.glob(helper_path + '/*').each do |helper|
-        begin
-          require helper
-          @helpers << helper
-        rescue LoadError, SyntaxError
-          raise LoadError, "Failed to load helper: #{helper}"
-        end
+      Dir.glob("#{helper_path}/*").sort.each do |helper|
+        require helper
+        @helpers << helper
+      rescue LoadError, SyntaxError
+        raise LoadError, "Failed to load helper: #{helper}"
       end
     end
   end
@@ -103,7 +101,7 @@ module HSS
     # Evaluate the long_form using the stored context
 
     def parse(long_form)
-      a = eval '%Q{' + long_form + '}', @match_data # rubocop:disable Eval
+      a = eval "%Q{#{long_form}}", @match_data, __FILE__, __LINE__ # rubocop:disable Security/Eval
       a == long_form ? a : parse(a)
     end
   end
@@ -117,9 +115,10 @@ class Hash
 
   def deep_merge(new)
     merge(new) do |_, oldval, newval|
-      if oldval.is_a? Hash
+      case oldval
+      when Hash
         deep_merge oldval, newval
-      elsif oldval.is_a? Array
+      when Array
         oldval + newval
       else
         newval

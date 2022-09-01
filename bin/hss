@@ -2,7 +2,7 @@
 
 require 'hss'
 
-My_Handler = HSS::Handler.new(config: ENV['HSS_CONFIG'])
+My_Handler = HSS::Handler.new(config: ENV.fetch('HSS_CONFIG', nil))
 
 if ARGV == ['version']
   puts HSS::VERSION
@@ -16,7 +16,7 @@ end
 
 short_host = ARGV.delete_at(ARGV.find_index { |x| x[0, 1] != '-' } || 0)
 args = ARGV.reduce('') do |acc, elem|
-  acc + " '" + elem.gsub(/([$"])/, '\1') + "'"
+  "#{acc} '#{elem.gsub(/([$"])/, '\1')}'"
 end
 command = ENV['HSS_COMMAND'] || 'ssh'
 command.prepend('echo ') if ENV['HSS_DEBUG']
