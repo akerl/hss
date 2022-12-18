@@ -2,7 +2,7 @@ hss
 =========
 
 [![Gem Version](https://img.shields.io/gem/v/hss.svg)](https://rubygems.org/gems/hss)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/akerl/hss/Build)](https://github.com/akerl/hss/actions)
+[![GitHub Workflow Status](https://img.shields.io/actions/github/workflow/status/akerl/hss/build.yml?branch=main)](https://github.com/akerl/hss/actions)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
 SSH helper that uses regex and fancy expansion to dynamically manage SSH shortcuts
