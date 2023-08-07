@@ -7,8 +7,8 @@ require 'hss/version'
 ##
 # HSS module provides a helper for SSH shortcuts
 module HSS
-  DEFAULT_CONFIG = '~/.hss.yml'
-  DEFAULT_LIB = "#{Pathname.new(__FILE__).realpath.split[0]}/hss/helpers"
+  DEFAULT_CONFIG = File.join(Dir.home, '.hss.yml')
+  DEFAULT_LIB = File.join(Pathname.new(__FILE__).realpath.split[0], 'hss', 'helpers')
 
   class << self
     ##
@@ -67,7 +67,7 @@ module HSS
     def load_helpers(helper_path = nil)
       helper_path ||= HSS::DEFAULT_LIB
       helper_path = File.expand_path(helper_path)
-      Dir.glob("#{helper_path}/*").sort.each do |helper|
+      Dir.glob(File.join(helper_path, '*')).sort.each do |helper|
         require helper
         @helpers << helper
       rescue LoadError, SyntaxError
