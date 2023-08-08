@@ -9,6 +9,7 @@ require 'hss/version'
 module HSS
   DEFAULT_CONFIG = File.join(Dir.home, '.hss.yml')
   DEFAULT_LIB = File.join(Pathname.new(__FILE__).realpath.split[0], 'hss', 'helpers')
+  CONFIG_DELIMITERS = /cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM ? ';' : /[:;]/
 
   class << self
     ##
@@ -52,7 +53,7 @@ module HSS
 
     def load_config(config_path = nil)
       path = File.expand_path(config_path || HSS::DEFAULT_CONFIG)
-      files = path.split(':').map { |x| YAML.safe_load File.read x }
+      files = path.split(CONFIG_DELIMITERS).map { |x| YAML.safe_load File.read x }
       @config = files.reverse.reduce(&:deep_merge)
       @patterns = @config.delete('patterns') || raise
     # rubocop:disable Lint/ShadowedException
