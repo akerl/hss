@@ -9,7 +9,7 @@ require 'hss/version'
 module HSS
   DEFAULT_CONFIG = File.join(Dir.home, '.hss.yml')
   DEFAULT_LIB = File.join(Pathname.new(__FILE__).realpath.split[0], 'hss', 'helpers')
-  CONFIG_DELIMITERS = /cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM ? ';' : /[:;]/
+  CONFIG_DELIMITERS = /cygwin|mswin|mingw|bccwin|wince|emx/.match?(RUBY_PLATFORM) ? ';' : /[:;]/
 
   class << self
     ##
