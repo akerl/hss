@@ -91,7 +91,7 @@ module HSS
     # Check for a match
     # If the input matches, store the context for use in helpers
 
-    def check(input, short_form)
+    def check(input, short_form) # rubocop:disable Naming/PredicateMethod
       return false unless input.match short_form
       x = Regexp.last_match
       @match_data = binding
