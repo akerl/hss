@@ -19,7 +19,7 @@ args = ARGV.reduce('') do |acc, elem|
   "#{acc} '#{elem.gsub(/([$"])/, '\1')}'"
 end
 command = ENV['HSS_COMMAND'] || 'ssh'
-command.prepend('echo ') if ENV['HSS_DEBUG']
+command = "echo #{command}" if ENV['HSS_DEBUG']
 
 begin
   long_host = My_Handler.handle short_host
