@@ -1,3 +1,7 @@
+# 1.2.0 / 2026-10-31
+
+* [BUGFIX] #45 Resolve frozen string overwrite in debug mode
+
 # 1.1.0 / 2023-08-08
 
 * [BUGFIX] Support ';' as an HSS_CONFIG delimiter on all platforms, and do not use ':' on Windows, to support the presence of ':' in Windows paths
